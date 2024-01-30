@@ -14,7 +14,7 @@ class ThirdShelf extends Component {
             <Card.Body className="d-flex flex-column justify-content-around">
               <Card.Title>{Book.title}</Card.Title>
               <Card.Text>{Book.category}</Card.Text>
-              <Button variant="success">{Book.price + "€"} </Button>
+              <Button variant="outline-info">{Book.price + "€"} </Button>
             </Card.Body>
           </Card>
         </Col>
