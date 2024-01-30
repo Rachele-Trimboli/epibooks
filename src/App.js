@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyNav from "./MyNav";
 import MyFooter from "./MyFooter";
-import FirstShelf from "./FirstShelf";
 import ShelfTitle from "./ShelfTitle";
-import SecondShelf from "./SecondShelf";
-import ThirdShelf from "./ThirdShelf";
 import Welcome from "./Welcome";
 import Hero from "./Hero";
+import Shelf from "./Shelf";
+import Fantasy from "./Data/books/fantasy.json";
+import Romance from "./Data/books/romance.json";
+import Scifi from "./Data/books/scifi.json";
 import "./App.css";
 import { Col, Container, Row } from "react-bootstrap";
 
@@ -37,7 +38,7 @@ function App() {
           </Row>
 
           <Row className="mt-3">
-            <FirstShelf></FirstShelf>
+            <Shelf books={Fantasy}></Shelf>
           </Row>
 
           <Row className="mt-3">
@@ -47,7 +48,7 @@ function App() {
           </Row>
 
           <Row className="mt-3">
-            <SecondShelf></SecondShelf>
+            <Shelf books={Romance}></Shelf>
           </Row>
           <Row className="mt-3">
             <Col>
@@ -55,7 +56,7 @@ function App() {
             </Col>
           </Row>
           <Row className="mt-3">
-            <ThirdShelf></ThirdShelf>
+            <Shelf books={Scifi}></Shelf>
           </Row>
         </Container>
       </main>
