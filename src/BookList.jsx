@@ -1,21 +1,41 @@
+import { Col, Form } from "react-bootstrap";
+import SingleBook from "./SingleBook";
 import { Component } from "react";
-import { Col } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 
 class BookList extends Component {
+  // BookList riceve il contenuto di uno dei JSON dalle props
+  // ipotizziamo una prop chiamata "jsonOfBooks"
+  // la troverò dentro props.jsonOfBooks
+
+  state = {
+    searchValue: "",
+  };
+
   render() {
-    return this.props.books.slice(7, 12).map((book) => {
-      return (
-        <Col sm={6} md={4} lg={2} key={book.asin}>
-          <Card style={{ height: "100%" }}>
-            <Card.Img variant="top" src={book.img} style={{ height: "100%" }} />
-            <Card.Body className="d-flex flex-column justify-content-around">
-              <Card.Title>{book.title}</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-      );
-    });
+    return (
+      <>
+        <Form.Control
+          placeholder="cerca qui"
+          value={this.state.searchValue}
+          onChange={(e) => {
+            this.setState({ searchValue: e.target.value });
+          }}
+          className="my-3"
+        />
+        {this.props.jsonOfBooks
+          .filter((book) =>
+            book.title
+              .toLowerCase()
+              .includes(this.state.searchValue.toLowerCase())
+          )
+          .map((book) => (
+            <Col sm={6} md={4} lg={2} key={book.asin}>
+              <SingleBook oneBook={book} />
+            </Col>
+          ))}
+      </>
+    );
   }
 }
+
 export default BookList;
