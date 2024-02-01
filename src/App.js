@@ -6,7 +6,7 @@ import Welcome from "./Welcome";
 import Hero from "./Hero";
 import Shelf from "./Shelf";
 import Fantasy from "./Data/books/fantasy.json";
-import Romance from "./Data/books/romance.json";
+
 import "./App.css";
 import { Col, Container, Row } from "react-bootstrap";
 import books from "./Data/books/horror.json";
