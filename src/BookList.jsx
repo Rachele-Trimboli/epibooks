@@ -32,7 +32,7 @@ class BookList extends Component {
             <Col sm={12} lg={4} key={book.asin}>
               <SingleBook
                 oneBook={book}
-                onClick={() => this.props.onBookClick(book.asin)}
+                onClick={(e) => this.props.onBookClick(book.asin)}
               />
             </Col>
           ))}

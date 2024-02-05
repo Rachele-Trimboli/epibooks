@@ -41,11 +41,11 @@ class CommentArea extends Component {
     return this.state.comments ? (
       <>
         <CommentList array={this.state.comments}></CommentList>
-        <AddComment asin={this.props.selected}></AddComment>
+        <AddComment asin={this.props.asin}></AddComment>
       </>
     ) : (
       <>
-        <AddComment asin={this.props.selected}></AddComment>
+        <AddComment asin={this.props.asin}></AddComment>
       </>
     );
   }
