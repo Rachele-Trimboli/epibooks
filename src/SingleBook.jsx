@@ -29,9 +29,9 @@ class SingleBook extends Component {
         <Card.Body className="d-flex flex-column justify-content-evenly">
           <Card.Title>{this.props.oneBook.title}</Card.Title>
           <Card.Text>{this.props.oneBook.category}</Card.Text>
-          {this.state.selected === true && (
+          {/* {this.state.selected === true && (
             <CommentArea asin={this.props.oneBook.asin}></CommentArea>
-          )}
+          )} */}
         </Card.Body>
       </Card>
     );

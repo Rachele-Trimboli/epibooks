@@ -29,8 +29,11 @@ class BookList extends Component {
               .includes(this.state.searchValue.toLowerCase())
           )
           .map((book) => (
-            <Col sm={6} md={4} lg={2} key={book.asin}>
-              <SingleBook oneBook={book} />
+            <Col sm={12} lg={4} key={book.asin}>
+              <SingleBook
+                oneBook={book}
+                onClick={() => this.props.onBookClick(book.asin)}
+              />
             </Col>
           ))}
       </>

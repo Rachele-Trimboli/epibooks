@@ -6,57 +6,81 @@ import Welcome from "./Welcome";
 import Hero from "./Hero";
 import Shelf from "./Shelf";
 import Fantasy from "./Data/books/fantasy.json";
-
+import { Component } from "react";
 import "./App.css";
 import { Col, Container, Row } from "react-bootstrap";
 import books from "./Data/books/horror.json";
 import BookList from "./BookList";
+import CommentArea from "./CommentArea";
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <MyNav></MyNav>
-      </header>
-      <main>
-        <Container fluid>
-          <Row>
-            <Col>
-              <Hero></Hero>
-            </Col>
-          </Row>
-        </Container>
-        <Container className="mt-5 mb-5">
-          <Row>
-            <Col>
-              <Welcome></Welcome>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <ShelfTitle text="In evidenza" />
-            </Col>
-          </Row>
+class App extends Component {
+  state = {
+    asin: [],
+  };
 
-          <Row className="mt-3">
-            <Shelf books={Fantasy}></Shelf>
-          </Row>
+  newAsin = (value) => {
+    this.setState({
+      asin: value,
+    });
+  };
 
-          <Row className="mt-3">
-            <Col>
-              <ShelfTitle text="I titoli del momento" />
-            </Col>
-          </Row>
-          <Row>
-            <BookList jsonOfBooks={books} />
-          </Row>
-        </Container>
-      </main>
-      <footer>
-        <MyFooter></MyFooter>
-      </footer>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <MyNav></MyNav>
+        </header>
+        <main>
+          <Container fluid>
+            <Row>
+              <Col>
+                <Hero></Hero>
+              </Col>
+            </Row>
+          </Container>
+          <Container className="mt-5 mb-5">
+            <Row>
+              <Col>
+                <Welcome></Welcome>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <ShelfTitle text="In evidenza" />
+              </Col>
+            </Row>
+
+            <Row className="mt-3">
+              <Shelf books={Fantasy}></Shelf>
+            </Row>
+
+            <Row className="mt-3">
+              <Col>
+                <ShelfTitle text="I titoli del momento" />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Row>
+                  <BookList
+                    jsonOfBooks={books}
+                    asin={this.state.asin}
+                    onBookClick={this.newAsin}
+                  />
+                </Row>
+              </Col>
+              <Col>
+                <CommentArea asin={this.state.asin}></CommentArea>
+              </Col>
+            </Row>
+          </Container>
+        </main>
+        <footer>
+          <MyFooter></MyFooter>
+        </footer>
+      </div>
+    );
+  }
 }
 
 export default App;
