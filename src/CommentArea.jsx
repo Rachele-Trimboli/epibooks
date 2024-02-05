@@ -8,7 +8,7 @@ class CommentArea extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (this.props.selected !== prevProps.selected) {
+    if (this.props.asin !== prevProps.asin) {
       fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" +
           this.props.asin,

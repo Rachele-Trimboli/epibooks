@@ -14,7 +14,7 @@ class SingleBook extends Component {
   render() {
     return (
       <Card
-        border={this.state.selected ? "info" : "gray"}
+        border={this.props.selected ? "info" : "gray"}
         style={{ height: "100%" }}
       >
         <Card.Img
@@ -22,13 +22,17 @@ class SingleBook extends Component {
           src={this.props.oneBook.img}
           onClick={() => {
             this.setState({
-              selected: this.state.selected ? false : true,
+              selected: this.props.selected ? false : true,
             });
+            this.props.newAsin(this.props.oneBook.asin);
           }}
         />
         <Card.Body className="d-flex flex-column justify-content-evenly">
           <Card.Title>{this.props.oneBook.title}</Card.Title>
           <Card.Text>{this.props.oneBook.category}</Card.Text>
+          {/* {this.state.selected === true && (
+            <CommentArea asin={this.props.oneBook.asin}></CommentArea>
+          )} */}
         </Card.Body>
       </Card>
     );

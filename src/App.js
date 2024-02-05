@@ -15,7 +15,8 @@ import CommentArea from "./CommentArea";
 
 class App extends Component {
   state = {
-    asin: [],
+    asin: "",
+    selected: false,
   };
 
   newAsin = (value) => {
@@ -65,7 +66,8 @@ class App extends Component {
                   <BookList
                     jsonOfBooks={books}
                     asin={this.state.asin}
-                    onBookClick={this.newAsin}
+                    newAsin={this.newAsin}
+                    selected={this.state.selected}
                   />
                 </Row>
               </Col>
