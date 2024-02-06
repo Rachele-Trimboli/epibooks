@@ -1,5 +1,4 @@
 import Card from "react-bootstrap/Card";
-import CommentArea from "./CommentArea";
 
 import { useState } from "react";
 
@@ -23,6 +22,7 @@ const SingleBook = (props) => {
           // });
           setSelected(!selected);
           props.newAsin(props.oneBook.asin);
+          // console.log(props.oneBook.asin);
         }}
       />
       <Card.Body className="d-flex flex-column justify-content-evenly">
