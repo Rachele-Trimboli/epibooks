@@ -1,42 +1,39 @@
 import Card from "react-bootstrap/Card";
 import CommentArea from "./CommentArea";
 
-import { Component } from "react";
+import { useState } from "react";
 
-class SingleBook extends Component {
+const SingleBook = (props) => {
   // se l'oggetto passato nelle props si chiama "oneBook",
   // lo troverò dove in props.oneBook
 
-  state = {
-    selected: false,
-  };
+  // state = {
+  //   selected: false,
+  // };
+  const [selected, setSelected] = useState(false);
 
-  render() {
-    return (
-      <Card
-        border={this.props.selected ? "info" : "gray"}
-        style={{ height: "100%" }}
-      >
-        <Card.Img
-          variant="top"
-          src={this.props.oneBook.img}
-          onClick={() => {
-            this.setState({
-              selected: this.props.selected ? false : true,
-            });
-            this.props.newAsin(this.props.oneBook.asin);
-          }}
-        />
-        <Card.Body className="d-flex flex-column justify-content-evenly">
-          <Card.Title>{this.props.oneBook.title}</Card.Title>
-          <Card.Text>{this.props.oneBook.category}</Card.Text>
-          {/* {this.state.selected === true && (
+  return (
+    <Card border={selected ? "info" : "gray"} style={{ height: "100%" }}>
+      <Card.Img
+        variant="top"
+        src={props.oneBook.img}
+        onClick={() => {
+          // setState({
+          //   selected: props.selected ? false : true,
+          // });
+          setSelected(!selected);
+          props.newAsin(props.oneBook.asin);
+        }}
+      />
+      <Card.Body className="d-flex flex-column justify-content-evenly">
+        <Card.Title>{props.oneBook.title}</Card.Title>
+        <Card.Text>{props.oneBook.category}</Card.Text>
+        {/* {this.state.selected === true && (
             <CommentArea asin={this.props.oneBook.asin}></CommentArea>
           )} */}
-        </Card.Body>
-      </Card>
-    );
-  }
-}
+      </Card.Body>
+    </Card>
+  );
+};
 
 export default SingleBook;

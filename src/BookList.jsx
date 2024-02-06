@@ -1,45 +1,42 @@
 import { Col, Form } from "react-bootstrap";
 import SingleBook from "./SingleBook";
-import { Component } from "react";
+import { useState } from "react";
 
-class BookList extends Component {
+const BookList = (props) => {
   // BookList riceve il contenuto di uno dei JSON dalle props
   // ipotizziamo una prop chiamata "jsonOfBooks"
   // la troverò dentro props.jsonOfBooks
 
-  state = {
-    searchValue: "",
-  };
+  // state = {
+  //   searchValue: "",
+  // };
+  const [searchValue, setSearchValue] = useState("");
 
-  render() {
-    return (
-      <>
-        <Form.Control
-          placeholder="cerca qui"
-          value={this.state.searchValue}
-          onChange={(e) => {
-            this.setState({ searchValue: e.target.value });
-          }}
-          className="my-3"
-        />
-        {this.props.jsonOfBooks
-          .filter((book) =>
-            book.title
-              .toLowerCase()
-              .includes(this.state.searchValue.toLowerCase())
-          )
-          .map((book) => (
-            <Col sm={12} lg={4} key={book.asin}>
-              <SingleBook
-                oneBook={book}
-                newAsin={this.props.newAsin}
-                selected={this.props.selected}
-              />
-            </Col>
-          ))}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Form.Control
+        placeholder="cerca qui"
+        value={searchValue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
+        className="my-3"
+      />
+      {props.jsonOfBooks
+        .filter((book) =>
+          book.title.toLowerCase().includes(searchValue.toLowerCase())
+        )
+        .map((book) => (
+          <Col sm={12} lg={4} key={book.asin}>
+            <SingleBook
+              oneBook={book}
+              newAsin={props.newAsin}
+              selected={props.selected}
+            />
+          </Col>
+        ))}
+    </>
+  );
+};
 
 export default BookList;
