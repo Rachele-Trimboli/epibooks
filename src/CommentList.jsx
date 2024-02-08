@@ -7,7 +7,9 @@ const CommentList = (props) => {
   return props.array.map((commento) => {
     return (
       <ListGroup key={commento.elementId}>
-        <ListGroup.Item>{commento.comment}</ListGroup.Item>
+        <ListGroup.Item data-testid="listitem">
+          {commento.comment}
+        </ListGroup.Item>
         <ListGroup.Item>{commento.rate}</ListGroup.Item>
       </ListGroup>
     );

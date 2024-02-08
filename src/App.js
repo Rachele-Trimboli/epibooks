@@ -61,7 +61,7 @@ const App = () => {
           </Row>
           <Row>
             <Col>
-              <Row>
+              <Row className="g-3">
                 <BookList
                   jsonOfBooks={books}
                   asin={asin}

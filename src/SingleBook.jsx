@@ -12,8 +12,13 @@ const SingleBook = (props) => {
   const [selected, setSelected] = useState(false);
 
   return (
-    <Card border={selected ? "info" : "gray"} style={{ height: "100%" }}>
+    <Card
+      border={selected ? "info" : "gray"}
+      style={{ height: "100%" }}
+      data-testid="card"
+    >
       <Card.Img
+        data-testid="singlebook"
         variant="top"
         src={props.oneBook.img}
         onClick={() => {
